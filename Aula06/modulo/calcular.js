@@ -8,6 +8,15 @@
 //toLowerCase() - para deixar a string toda minuscula
 //toUpperCase() - para deixar a string toda maiuscula
 
+
+const validarDados = function (numero1, numero2, operador) {
+    if (valor1 == '' || isNaN(valor1) || valor2 == '' || isNaN(valor2)) {
+        return false
+    }else{
+        return true
+    }
+}
+
 //modelo de função anonima
 //Calcular as 4 operacoes matematicas
 const calcular = function (numero1, numero2, operador){
@@ -32,17 +41,17 @@ const calcular = function (numero1, numero2, operador){
     //     resultado = valor1 * valor2
 
     switch (operadorMatematico) {
-        case 'somar':
-            resultado = valor1 + valor2
+        case 'somar': //if
+            resultado = somar = (valor1, valor2)
             break;
-        case 'dividir':
-            resultado = valor1 / valor2
+        case 'dividir': //else if
+            resultado = dividir = (valor1, valor2)
             break;
-        case 'subtrair':
-            resultado = valor1 - valor2
+        case 'subtrair': //else if
+            resultado = subtrair = (valor1, valor2)
             break;
-        case 'multiplicar':
-            resultado = valor1 * valor2
+        case 'multiplicar': //else if
+            resultado = multiplicar = (valor1, valor2)
             break;
     
     }
@@ -58,4 +67,23 @@ const calcular = function (numero1, numero2, operador){
     
 }
 
-console.log(calcular(10, 5, 'soma'));
+// Exemplo de função baseada em SETA (=>) - Arrow Function
+// função para realizar as operacoes matematicas
+const somar         = (numero1, numero2)  => Number(numero1) + Number(numero2)
+const subtrair      = (numero1, numero2)  => Number(numero1) - Number(numero2)
+const dividir       = (numero1, numero2)  => Number(numero1) / Number(numero2)
+const multiplicar   = (numero1, numero2)  => Number(numero1) * Number(numero2)
+
+
+module.exports = {
+    calcular,
+    somar,
+    subtrair,
+    dividir,
+    multiplicar
+    
+}
+
+
+
+

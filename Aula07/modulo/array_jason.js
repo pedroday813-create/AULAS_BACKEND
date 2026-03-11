@@ -17,9 +17,9 @@
 */
 
 //formas de Criar um ARRAY
-const listaDeNomes = ['jose', 'maria', 'joao', 'Andre', 'pedro']
-const listaDeClientes = []
-const listaDeFornecedores = []
+const listaDeNomes          = ['jose', 'maria', 'joao', 'Andre', 'pedro', 'carlos', 'paulo', 'carla', 'andreia', 'ana']
+const listaDeClientes       = []
+const listaDeFornecedores   = []
 
 const exibirDados = function () {
     //Exibe o objeto Array e eu conteudo
@@ -78,6 +78,9 @@ const exibirDados = function () {
 }
 
 
+
+
+
 const manipularDados = function () {
     //adicionando valores novos  no ARRAY atraves de seu indice
     listaDeClientes[0] = 'José da Silva'
@@ -91,10 +94,83 @@ const manipularDados = function () {
     listaDeFornecedores.push('Pedro da Silva')
     listaDeFornecedores.push('Paulo da Silva')
     listaDeFornecedores.push('Carla da Silva', 'andreia da Silva')
-    console.log(listaDeFornecedores)
+    console.table(listaDeFornecedores)
+
+    listaDeFornecedores.unshift('Ana da Silva') //Adiciona um novo valor, sempre no inicio do Array
+    console.table(listaDeFornecedores)
+
+    listaDeFornecedores.pop() //Remove o ultimo valor do Array
+    console.table(listaDeFornecedores)
+
+    listaDeFornecedores.shift() //Remove o primeiro valor do Array
+    console.table(listaDeFornecedores)
+
+    listaDeFornecedores.splice(2, 1) //Remove um valor do Array atraves do indice. Splice(indice, quantidade de itens a serem removidos)
+    console.table(listaDeFornecedores)
+
+
+
+
+
 
 }
 
-manipularDados()
 
+
+
+
+const removerItem = function (nome){
+
+    //let indice = listaDeNomes.indexOf(nome) //Retorna o indice do valor passado como parametro, caso o valor exista no Array. Caso o valor não exista, retorna -1
+    //listaDeNomes.splice(indice, 1) //Remove um valor do Array atraves do indice. Splice(indice, quantidade de itens a serem removidos)
+    
+    let indice = listaDeNomes.indexOf(nome)
+    if (indice != -1){
+        listaDeNomes.splice(indice, 1)
+        return true
+    }else{
+        return false
+    } 
+}
+    
+
+
+
+const verificarItem = function(nome){
+    return listaDeNomes.includes(nome) //Retorna true ou false, caso o valor exista ou não no Array
+    
+}
+
+
+const quantidadeItems = function(nome){
+    let cont = 0
+    listaDeNomes.forEach(function(item){
+        if (String(item).toLocaleUpperCase() == String(nome).toLocaleUpperCase()){
+            cont +=1
+        }
+    })
+
+    return cont
+}
+
+
+//manipularDados()
 // exibirDados()
+
+// let resposta = removerItem('maria')
+// if (resposta == true){
+//     console.log('O nome foi encontrado e removido com sucesso')
+// }else{
+//     console.log('O nome não foi encontrado na lista')
+// }
+
+// removerItem('Lucas')
+// console.table(listaDeNomes)
+
+
+// console.log(verificarItem('maria'))
+
+console.log(quantidadeItems('maria'));
+
+
+

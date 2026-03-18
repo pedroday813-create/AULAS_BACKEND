@@ -108,6 +108,9 @@ const manipularDados = function () {
     listaDeFornecedores.splice(2, 1) //Remove um valor do Array atraves do indice. Splice(indice, quantidade de itens a serem removidos)
     console.table(listaDeFornecedores)
 
+    listaDeFornecedores.splice(2, 0, 'Trasformers') //Adiciona um valor no Array atraves do indice. Splice(indice, quantidade de itens a serem removidos, valor a ser adicionado)
+    console.table(listaDeFornecedores)
+
 
 
 
@@ -154,6 +157,175 @@ const quantidadeItems = function(nome){
 }
 
 
+
+const trabalharComJson = function(){
+    let aluno = {"nome": "Pedro Rodrigues",
+                 "ra": 123456, 
+                 "telefone": "2131231232", 
+                 "email": "Jose@gmail.com" }
+    
+    //completa a estrutura do JSON com os dados do aluno, utilizando as chaves e valores
+
+    console.log(aluno.nome) //Acessa o valor do JSON atraves da chave;
+    
+    aluno.sexo = 'Masculino' //Adiciona um novo valor no JSON
+    
+        
+    delete aluno.telefone //Remove um valor do JSON atraves da chave
+
+
+    // console.log(aluno)
+}
+
+
+const cadastroDeProdutos = function(){
+    let cores = [
+        {"id": 1, "cor": "Branco"},      //indice 0
+        {"id": 2, "cor": "Preto"},      //indice 1
+        {"id": 3, "cor": "Cinza"},     //indice 2
+        {"id": 4, "cor": "Vermelho"}, //indice 3
+        {"id": 5, "cor": "Azul"}     //indice 4
+    ]
+
+    let marcas = [
+        {"id": 1, "marca": "LG",            "telefone":     "21312312",    "Email":    "LG@gmail.com"},     //indice 0
+        {"id": 2, "marca": "Dell",          "telefone":     "54367567",    "Email":    "Dell@gmail.com"},   //indice 1
+        {"id": 3, "marca": "Xiaomi",        "telefone":     "21313244",    "Email":    "Xiaomi@gmail.com"}, //indice 2
+        {"id": 4, "marca": "Lenovo",        "telefone":     "32153456",    "Email":    "Lenovo@gmail.com"}, //indice 3
+        {"id": 5, "marca": "Razer",         "telefone":     "53465478",    "Email":    "Razer@gmail.com"},  //indice 4
+        {"id": 6, "marca": "Multilaser",    "telefone":     "43555405",    "Email":    "Multilaser@gmail.com"}, //indice 5
+        {"id": 7, "marca": "Samsung",       "telefone":     "40605943",    "Email":    "Samsung@gmail.com"},    //indice 6
+
+    ]
+
+
+    let produtos = [
+        {"id": 1, 
+        "nome": "monitor", 
+        "descricao": "monitor de 24 polegadas",
+        "marca": [marcas[1].marca],
+        "quantidade": 20,
+        "cor": [cores[2], cores[1]],
+        "Valor": 1500.00
+    },
+    {"id": 2,
+        "nome": "teclado", 
+        "descricao": "teclado mecanico RGB",
+        "marca": [marcas[4].marca],
+        "quantidade": 200,
+        "cor": cores,
+        "Valor": 300.00
+    },
+    {"id": 3,
+        "nome": "Mouse", 
+        "descricao": "Mouse Gamer RGB",
+        "marca": [marcas[4], marcas[5], marcas[6]],
+        "quantidade": 500,
+        "cor": [cores[1], cores[2], cores[4]],
+        "Valor": 80
+    },
+    
+    
+]
+//console.table(produtos)
+
+ let listaProdutos = [
+   
+
+    //percorre o Array de produtos e exibe o nome do produto, a marca e a cor do produto utilizando as estruturas de repetição FOR EACH ou FOR OF
+    produtos.forEach(function(itemProduto){
+        console.log(`produto: ${itemProduto.nome}`);
+        
+        //percorre o objeto de marca dentro de cada produto para trazer as marcas
+        itemProduto.marca.forEach(function(itemMarca){
+            console.log(`       marca: ${itemMarca}`);
+        })
+
+        //percorre o objeto de cor dentro de cada produto para trazer as cores
+        itemProduto.cor.forEach(function(itemCor){
+            console.log(`          cor: ${itemCor.cor}`);
+        })
+
+    })
+
+    ]
+
+    // console.log('-----------------PRODUTO COM MAIS DE UMA MARCA-----------------');
+    // console.table('pesquisando produtor pelo nome')
+    // let nome = 'mouse'
+
+    // let cor = 'preto'
+    // let status = false
+
+
+    // produtos.forEach(function(itemProduto){
+    //     itemProduto.cor.forEach(function(itemCor){
+    //         if(String(itemCor.cor).toUpperCase() == String(cor).toUpperCase()){
+    //             console.log(itemProduto);
+    //             status = true
+            
+    //         }
+    //     })
+    // })
+
+
+
+
+    //pesquisar um produto pela COR
+    console.log('pesquisando Produtos pela Cor');
+    let cor = 'preto'
+    let status = false
+
+    produtos.forEach(function(itemProduto){
+        itemProduto.cor.forEach(function(itemCor){
+            if (String(itemCor.cor).toUpperCase() == String(cor).toUpperCase()){
+                console.log(itemProduto);
+                status = true
+            }
+        })
+    })
+
+
+    if (!status){
+        console.log('Não foi encontrado nenhum produto com a cor pesquisada')
+    }
+
+
+
+
+    
+    // console.log(produtos)
+    // console.log(produtos[0].cor)
+    // console.log(produtos[0].cor[1].cor) //Acessa o valor do JSON atraves do indice do Array e da chave do JSON;
+
+    // produtos[0].cor.forEach(function(nomeCor){
+    //     console.log("A cor do produto é: " + nomeCor.cor)
+
+    
+    
+    // }) //Adiciona um novo valor no Array do JSON
+
+
+
+
+
+
+
+
+    // console.log(cores)
+    // console.table(cores)
+
+
+    // console.log(cores[0].nome) //Acessa o valor do JSON atraves do indice do Array e da chave do JSON;
+        
+}
+
+
+
+
+
+
+
 //manipularDados()
 // exibirDados()
 
@@ -170,7 +342,10 @@ const quantidadeItems = function(nome){
 
 // console.log(verificarItem('maria'))
 
-console.log(quantidadeItems('maria'));
+// console.log(quantidadeItems('maria'))
+// trabalharComJson()
+
+cadastroDeProdutos()
 
 
 
